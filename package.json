@@ -1,0 +1,41 @@
+{
+  "name": "@eve/commons",
+  "description": "@Eve - Commons",
+  "version": "0.0.0",
+  "author": "Gonzales Castillo, Cristhian Alberto",
+  "bugs": {
+    "url": "https://github.com/gcca/eve/issues"
+  },
+  "dependencies": {
+    "angular": "^1.6.5"
+  },
+  "devDependencies": {
+    "@types/angular": "^1.6.29",
+    "@types/angular-mocks": "^1.5.10",
+    "@types/jasmine": "^2.5.53",
+    "babel-polyfill": "^6.26.0",
+    "jasmine-core": "^2.7.0",
+    "karma": "^1.7.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "phantomjs-prebuilt": "^2.1.15",
+    "systemjs": "^0.20.17",
+    "typescript": "^2.4.2"
+  },
+  "homepage": "https://github.com/gcca/eve#readme",
+  "keywords": [
+    "commons",
+    "eve",
+    "package"
+  ],
+  "license": "GPL-2.0",
+  "main": "build/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/gcca/eve.git"
+  },
+  "scripts": {
+    "build": "tsc -p src/",
+    "test": "karma start"
+  }
+}

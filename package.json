@@ -23,6 +23,7 @@
     "karma-phantomjs-launcher": "^1.0.4",
     "phantomjs-prebuilt": "^2.1.15",
     "systemjs": "^0.20.17",
+    "typedoc": "^0.8.0",
     "typescript": "^2.4.2"
   },
   "homepage": "https://github.com/gcca/eve#readme",
@@ -39,6 +40,7 @@
   },
   "scripts": {
     "build": "tsc -p src/",
+    "doc": "typedoc --module commonjs --out doc/ src/",
     "test": "karma start"
   }
 }

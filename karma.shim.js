@@ -40,7 +40,8 @@ System.import('system.conf.js')
 function initTesting() {
     return Promise.all(
         allSpecFiles.map(function(moduleName) {
-            return System.import(moduleName);
+            return System.import(moduleName)
+              .catch(function(error) { console.info(error.message); });
         })
     )
         .then(__karma__.start, __karma__.error)

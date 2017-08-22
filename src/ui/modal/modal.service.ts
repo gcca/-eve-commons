@@ -1,7 +1,6 @@
 import { Modal } from './index';
 import { ModalArgs } from './interfaces';
-// TODO: @commons.injector
-import { ModalBootstrapBuilder } from './contexts/bootstrap';
+import { ModalBuilderFactory } from './builder.factory';
 
 export class ModalService {
 
@@ -11,12 +10,7 @@ export class ModalService {
 
   new(options: ModalArgs): Modal {
     const $compile = this.$injector.get('$compile');
-    const $scope = {} as ng.IScope;
-    const modalBuilder = new ModalBootstrapBuilder();
-    modalBuilder.ng = {
-      $compile,
-      $scope,
-    };
+    const modalBuilder = new ModalBuilderFactory({ $compile }).get();
     const modal = modalBuilder.new(options);
     return modal;
   }

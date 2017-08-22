@@ -4,6 +4,7 @@ import { ModalArgs } from '../interfaces';
 declare const $: any;  // TODO: remove
 
 export class BootstrapModal implements Modal {
+
   bootstrapModal: {
     show(_relatedTarget?: Element): void;
   }
@@ -18,15 +19,13 @@ export class BootstrapModal implements Modal {
 }
 
 export class ModalBootstrapBuilder implements ModalBuilder {
-  ng: {
-    $compile: ng.ICompileService;
-    $scope: ng.IScope;
-  };
+
+  constructor(private $compile: ng.ICompileService) { }
 
   new(options: ModalArgs): Modal {
     const element = angular.element(options.template);
     const $scope = options.$scope;
-    this.ng.$compile(element)($scope);
+    this.$compile(element)($scope);
     $scope.$digest();
     return new BootstrapModal(element);
   }

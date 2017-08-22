@@ -49,6 +49,7 @@ export function describeHTMLBody() {
   ;
 
   afterEach(() => {
+    document.body.className = '';
     const modal = document.querySelector('.modal.ng-scope');
     if (modal) {
       document.body.removeChild(modal);
@@ -82,6 +83,10 @@ export function describeHTMLBody() {
     const button = getButton();
     button.click();
     expect(document.body.innerHTML).toContain('OK TITLE');
+  });
+
+  it('should append modal open class to body', () => {
+    expect(document.body.className).toContain('modal-open');
   });
 }
 

@@ -1,16 +1,19 @@
 import { Modal, ModalBuilder } from '../index';
 import { ModalArgs } from '../interfaces';
 
-declare const $: any;  // TODO: remove
+declare const $: { fn: { modal: { Constructor: _BootstrapModal } } };
 
 export class BootstrapModal implements Modal {
 
-  bootstrapModal: {
-    show(_relatedTarget?: Element): void;
-  }
+  private bootstrapModal: _BootstrapModal;
 
   constructor(private element: JQuery) {
-    this.bootstrapModal = new $.fn.modal.Constructor(this.element, {});
+    this.bootstrapModal = new $.fn.modal.Constructor(this.element, {
+      backdrop: true,
+      keyboard: true,
+      focus: true,
+      show: true,
+    });
   }
 
   show() {
@@ -29,4 +32,22 @@ export class ModalBootstrapBuilder implements ModalBuilder {
     $scope.$digest();
     return new BootstrapModal(element);
   }
+}
+
+interface _BootstrapModal {
+  new(element: JQuery, config: BootstrapModalConfig): _BootstrapModal;
+  dispose(): void;
+  handleUpdate(): void;
+  hide(event?: Event): void;
+  show(_relatedTarget?: Element): void;
+  toogle(_relatedTarget?: Element): void;
+  VERSION: string;
+  Default: BootstrapModalConfig;
+}
+
+interface BootstrapModalConfig {
+  backdrop: boolean;
+  keyboard: boolean;
+  focus: boolean;
+  show: boolean;
 }

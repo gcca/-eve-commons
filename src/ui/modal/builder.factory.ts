@@ -1,4 +1,5 @@
-import { ModalBootstrapBuilder } from './context/bootstrap';
+// TODO: import on demand to optimize packaging
+import { ModalBootstrapBuilder } from './context/bootstrap/builder';
 import { ModalBuilder } from './index';
 
 export type UIContext = 'bootstrap';

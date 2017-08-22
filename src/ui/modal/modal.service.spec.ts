@@ -1,6 +1,3 @@
-import { Modal } from './index';
-import { ModalService } from './modal.service';
-
 import { describeHTMLBody } from './modal.service.spec/htmlbody';
 
 describe('ModalService', () => {

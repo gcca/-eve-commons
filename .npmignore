@@ -1,3 +1,4 @@
-node_modules
-src
-**/*.spec.*
+*
+!build/**/*.js
+!build/**/*.d.ts
+!package.json

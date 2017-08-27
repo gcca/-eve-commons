@@ -8,8 +8,8 @@ export class BootstrapModal implements Modal {
 
   private bootstrapModal: InternalModal;
 
-  constructor(private element: JQuery) {
-    this.bootstrapModal = new $.fn.modal.Constructor(this.element, {
+  constructor(element: JQuery) {
+    this.bootstrapModal = new $.fn.modal.Constructor(element, {
       backdrop: true,
       keyboard: true,
       focus: true,

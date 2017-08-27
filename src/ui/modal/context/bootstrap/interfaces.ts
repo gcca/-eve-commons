@@ -1,3 +1,8 @@
+/**
+ * Programatic API for Bootstrap [Modal](
+ * https://v4-alpha.getbootstrap.com
+ *   /getting-started/javascript/#programmatic-api)
+ */
 export interface InternalModal {
   new(element: JQuery, config: Config): InternalModal;
   dispose(): void;
@@ -10,7 +15,7 @@ export interface InternalModal {
 }
 
 export interface Config {
-  backdrop: boolean;
+  backdrop: boolean | string;
   keyboard: boolean;
   focus: boolean;
   show: boolean;

@@ -48,7 +48,7 @@
   "scripts": {
     "build": "npm run compile",
     "compile": "concurrently \"npm run compile:pug\" \"npm run compile:sass\" \"npm run compile:typescript && npm run compile:babel\"",
-    "compile:babel": "babel -d build/ --plugins angular-inline-template,angularjs-inline-style,angularjs-annotate pre-build/",
+    "compile:babel": "babel -d build/ --no-comments --plugins angular-inline-template,angularjs-inline-style,angularjs-annotate pre-build/",
     "compile:pug": "pug -o pre-build/ src/",
     "compile:sass": "node-sass -o pre-build/ -r src/",
     "compile:typescript": "tsc -p src/",

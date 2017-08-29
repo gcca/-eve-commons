@@ -26,8 +26,6 @@ export const StepComponent: ng.IComponentOptions & { styleUrl?: string } = {
     label: '@',
   },
   controller: StepController,
-  template: `<div class="step" ng-show="$ctrl.selected" ng-transclude></div>
-  <span>{{ $ctrl.selected }}</span>
-  `,
+  template: '<div class="step" ng-show="$ctrl.selected" ng-transclude></div>',
   transclude: true,
 };

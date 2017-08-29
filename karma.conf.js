@@ -21,14 +21,13 @@ module.exports = function(config) {
     plugins: [
       'karma-phantomjs-launcher',
       'karma-jasmine',
-      'karma-spec-reporter',
     ],
     preprocessors: {
     },
     proxies: {
       '/base/build/node_modules/': '/base/node_modules/',
     },
-    reporters: ['spec'],
+    reporters: ['progress'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

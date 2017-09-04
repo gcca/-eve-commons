@@ -2,6 +2,17 @@ import { BoundaryNavigator } from '../navigator';
 import { WizardModule } from '../wizard.module';
 
 export function singleNavigation() {
+  beforeEach(() => {
+    jasmine.addMatchers({
+      toBeTheOnlyShownStepOn: () => ({
+        compare: (actual: HTMLElement, expected: HTMLElement[]) => ({
+          pass: isStepShown(actual)
+                && everyIsHidden(restOf(expected, expected.indexOf(actual))),
+        }),
+      }),
+    });
+  });
+
   let back: HTMLButtonElement,
       next: HTMLButtonElement,
       steps: Array<HTMLElement>,
@@ -46,44 +57,60 @@ export function singleNavigation() {
     }
   }));
 
-  it('should base nav next', () => {
-    next.click();
-    next.click();
-    back.click();
-    back.click();
-  });
+  // it('should base nav next', () => {});
 
   it('should single next', () => {
-    expect(isStepShown(steps[0])).toBeTruthy();
-    expect(everyIsHidden(restOf(steps, 0))).toBeTruthy();
+    expect(steps[0]).toBeTheOnlyShownStepOn(steps);
     next.click();
+    expect(steps[1]).toBeTheOnlyShownStepOn(steps);
   });
 
   it('should double next', () => {
+    expect(steps[0]).toBeTheOnlyShownStepOn(steps);
     next.click();
+    expect(steps[1]).toBeTheOnlyShownStepOn(steps);
     next.click();
+    expect(steps[2]).toBeTheOnlyShownStepOn(steps);
   });
 
   it('should complete next and back', () => {
+    expect(steps[0]).toBeTheOnlyShownStepOn(steps);
     next.click();
+    expect(steps[1]).toBeTheOnlyShownStepOn(steps);
     next.click();
+    expect(steps[2]).toBeTheOnlyShownStepOn(steps);
     back.click();
+    expect(steps[1]).toBeTheOnlyShownStepOn(steps);
   });
 
   it('should next boundary and back', () => {
+    expect(steps[0]).toBeTheOnlyShownStepOn(steps);
     next.click();
+    expect(steps[1]).toBeTheOnlyShownStepOn(steps);
     next.click();
+    expect(steps[2]).toBeTheOnlyShownStepOn(steps);
     next.click();
+    expect(steps[2]).toBeTheOnlyShownStepOn(steps);
     back.click();
+    expect(steps[1]).toBeTheOnlyShownStepOn(steps);
   });
 
   it('should extra info back', () => {
+    expect(steps[0]).toBeTheOnlyShownStepOn(steps);
     next.click();
+    expect(steps[1]).toBeTheOnlyShownStepOn(steps);
     next.click();
+    expect(steps[2]).toBeTheOnlyShownStepOn(steps);
     next.click();
+    expect(steps[2]).toBeTheOnlyShownStepOn(steps);
     next.click();
+    expect(steps[2]).toBeTheOnlyShownStepOn(steps);
     back.click();
+    expect(steps[1]).toBeTheOnlyShownStepOn(steps);
     back.click();
+    expect(steps[0]).toBeTheOnlyShownStepOn(steps);
+    back.click();
+    expect(steps[0]).toBeTheOnlyShownStepOn(steps);
   });
 }
 

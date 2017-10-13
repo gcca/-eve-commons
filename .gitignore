@@ -2,3 +2,5 @@ build
 doc
 node_modules
 pre-build
+.idea/
+.idea/*

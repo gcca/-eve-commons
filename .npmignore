@@ -1,4 +1,3 @@
-*
-!build/**/*.js
-!build/**/*.d.ts
+build/**/*.js
+build/**/*.d.ts
 !package.json
